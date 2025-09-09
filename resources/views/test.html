@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabulator Client-Side</title>
+    <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+</head>
+<body>
+    <h2>Account List (Client-Side)</h2>
+
+    <!-- Search box -->
+    <input type="text" id="search-input" placeholder="Search..." style="margin-bottom:10px;">
+
+    <!-- Table -->
+    <div id="account-table"></div>
+
+    <script>
+        // Example data (you can also load from JSON API once and keep in memory)
+        var tableData = [
+            {id:1, name:"John Doe", email:"john@example.com", created_at:"2025-09-08"},
+            {id:2, name:"Jane Smith", email:"jane@example.com", created_at:"2025-09-07"},
+            {id:3, name:"Mike Lee", email:"mike@example.com", created_at:"2025-09-06"},
+            // ... more data
+        ];
+
+        var table = new Tabulator("#account-table", {
+            data: tableData,        // ✅ load data once
+            layout:"fitColumns",
+            pagination:"local",     // ✅ client-side pagination
+            paginationSize:5,       // 5 rows per page
+            columns:[
+                {title:"ID", field:"id", sorter:"number"},
+                {title:"Name", field:"name", sorter:"string"},
+                {title:"Email", field:"email", sorter:"string"},
+                {title:"Created At", field:"created_at", sorter:"date"},
+            ],
+        });
+
+        // ✅ Search filter
+        document.getElementById("search-input").addEventListener("keyup", function(){
+            table.setFilter([
+                [
+                    {field:"name", type:"like", value:this.value},
+                    {field:"email", type:"like", value:this.value},
+                ]
+            ]);
+        });
+    </script>
+</body>
+</html>
