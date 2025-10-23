@@ -10,9 +10,9 @@ class AccountModel extends Model
     use SoftDeletes;
 
     protected $table = 'account';
-    
+
     protected $fillable = [
-        'account_type',
+        'product_id',
         'party_name',
         'contact_person',
         'mobile_number',
@@ -25,6 +25,7 @@ class AccountModel extends Model
         'account_number',
         'ifsc_code',
         'account_holder_name',
+        'financial_year',
         'remarks',
         'date',
     ];

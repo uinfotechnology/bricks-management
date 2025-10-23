@@ -21,19 +21,19 @@
                             novalidate>
                             @csrf
 
-                            <!-- Account Type -->
+                            <!-- Product Type -->
                             <div class="col-md-6">
-                                <label class="form-label">Account Type <span class="text-danger">*</span> </label>
-                                <select name="account_type" class="form-control" required>
+                                <label class="form-label">Product Type <span class="text-danger">*</span> </label>
+                                <select name="product_id" class="form-control" required>
                                     <option value="">Select Type</option>
-                                    @foreach ($accountType as $item)
-                                        <option value="{{ $item }}"
-                                            {{ old('account_type') == $item ? 'selected' : '' }}>
-                                            {{ $item }}
+                                    @foreach ($product as $item)
+                                        <option value="{{ $item->id }}"
+                                            {{ old('product_id') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->product_name }}
                                         </option>
                                     @endforeach
                                 </select>
-                                @error('account_type')
+                                @error('product_id')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -60,7 +60,8 @@
                             <div class="col-md-6">
                                 <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
                                 <input type="text" name="mobile_number" class="form-control"
-                                    placeholder="Enter Mobile Number" value="{{ old('mobile_number') }}" maxlength="10" required>
+                                    placeholder="Enter Mobile Number" value="{{ old('mobile_number') }}" maxlength="10"
+                                    required>
                                 @error('mobile_number')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -99,8 +100,8 @@
                             <div class="col-md-6">
                                 <label class="form-label">Opening Balance</label>
                                 <input type="number" name="opening_balance" class="form-control"
-                                    placeholder="Enter Opening Balance" value="{{ old('opening_balance',0) }}" min="0"
-                                    step="any" >
+                                    placeholder="Enter Opening Balance" value="{{ old('opening_balance', 0) }}"
+                                    min="0" step="any">
                                 @error('opening_balance')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -154,7 +155,8 @@
                             </div>
                             <div class="col-md-2">
                                 <label class="form-label">Date</label>
-                                <input type="date" name="created_date" class="form-control" value="{{ old('created_date', date('Y-m-d'))  }}">
+                                <input type="date" name="created_date" class="form-control"
+                                    value="{{ old('created_date', date('Y-m-d')) }}">
                                 @error('created_date')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

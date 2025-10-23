@@ -1,479 +1,362 @@
 <aside class="sidebar">
-        <button type="button" class="sidebar-close-btn">
-            <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
-        </button>
-        <div>
-            <a href="index.html" class="sidebar-logo">
-                <img src="assets/images/logo.png" alt="site logo" class="light-logo">
-                <img src="assets/images/logo-light.png" alt="site logo" class="dark-logo">
-                <img src="assets/images/logo-icon.png" alt="site logo" class="logo-icon">
-            </a>
-        </div>
-        <div class="sidebar-menu-area">
-            <ul class="sidebar-menu" id="sidebar-menu">
-                <li>
-                    <a href="#">
-                        <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="sidebar-menu-group-title">Master</li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
-                        <span>Account</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="{{ route('admin.account.createView') }}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                                Create New</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.account.list')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> List</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="email.html">
-                        <iconify-icon icon="mage:email" class="menu-icon"></iconify-icon>
-                        <span>Email</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="chat-message.html">
-                        <iconify-icon icon="bi:chat-dots" class="menu-icon"></iconify-icon>
-                        <span>Chat</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="calendar-main.html">
-                        <iconify-icon icon="solar:calendar-outline" class="menu-icon"></iconify-icon>
-                        <span>Calendar</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="kanban.html">
-                        <iconify-icon icon="material-symbols:map-outline" class="menu-icon"></iconify-icon>
-                        <span>Kanban</span>
-                    </a>
-                </li>
-                
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-robot-2-line text-xl me-6 d-flex w-auto"></i>
-                        <span>Ai Application</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="text-generator.html"><i
-                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Text
-                                Generator</a>
-                        </li>
-                        <li>
-                            <a href="code-generator.html"><i
-                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Code
-                                Generator</a>
-                        </li>
-                        <li>
-                            <a href="image-generator.html"><i
-                                    class="ri-circle-fill circle-icon text-info-main w-auto"></i> Image
-                                Generator</a>
-                        </li>
-                        <li>
-                            <a href="voice-generator.html"><i
-                                    class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Voice
-                                Generator</a>
-                        </li>
-                        <li>
-                            <a href="video-generator.html"><i
-                                    class="ri-circle-fill circle-icon text-success-main w-auto"></i> Video
-                                Generator</a>
-                        </li>
-                    </ul>
-                </li>
+    <button type="button" class="sidebar-close-btn">
+        <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
+    </button>
+    <div>
+        @php
+            use Illuminate\Support\Facades\DB;
+            $companyDetsils = DB::table('company_details')->first();
+        @endphp
+        <a href="{{ route('admin.dashboard') }}" class="sidebar-logo">
+            <img src="{{ asset('upload/company') }}/{{ $companyDetsils->image }}" alt="image" class="mb-8"
+                alt="site logo" class="light-logo">
+        </a>
+    </div>
+    <div class="sidebar-menu-area">
+        <ul class="sidebar-menu" id="sidebar-menu">
+            <li>
+                <a href="{{ route('admin.dashboard') }}">
+                    <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-menu-group-title">Master</li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Account</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.account.createView') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Create New</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.account.list') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> List</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Purchase</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.purchase.purchaseView') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Create New</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.purchase.list') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.purchase.purchaseFilter') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Purchase Data By
+                            Filter</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Manage Stock</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.stock.useStockEntry') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Use Stock Entry</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.stock.useStockList') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Use Stock List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.stock.useStockFilter') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Use Stock Filter</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.stock.stockList') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Stock</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.stock.stockTransactionList') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Stock Transaction</a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-btc-line text-xl me-6 d-flex w-auto"></i>
-                        <span>Crypto Currency</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="wallet.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                                Wallet</a>
-                        </li>
-                        <li>
-                            <a href="marketplace.html"><i
-                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                                Marketplace</a>
-                        </li>
-                        <li>
-                            <a href="marketplace-details.html"><i
-                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                                Marketplace Details</a>
-                        </li>
-                        <li>
-                            <a href="portfolio.html"><i
-                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                                Portfolios</a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Bricks Stock</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.bricks_stock.createBricksStockView') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Create Bricks Stock</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.bricks_stock.BricksStock') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Bricks Stock</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.bricks_stock.BricksStockList') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Bricks Stock List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.bricks_stock.bricksStockFilter') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Bricks Stock Filter</a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="sidebar-menu-group-title">UI Elements</li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Bricks Sale</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.bricks_sale.createBricksSaleView') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Create Bricks Sale</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.bricks_sale.bricksSaleList') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Bricks Sale List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.bricks_sale.bricksSaleFilter') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Bricks Sale Filter</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.bricks_sale.vehicleWiseFilter') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Vehicle Wise Filter</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.bricks_sale.customerWiseFilter') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Customer Wise Filter</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.bricks_sale.bricksWiseFilter') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Bricks Wise Filter</a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <iconify-icon icon="solar:document-text-outline" class="menu-icon"></iconify-icon>
-                        <span>Components</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="typography.html"><i
-                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                                Typography</a>
-                        </li>
-                        <li>
-                            <a href="colors.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                                Colors</a>
-                        </li>
-                        <li>
-                            <a href="button.html"><i class="ri-circle-fill circle-icon text-success-main w-auto"></i>
-                                Button</a>
-                        </li>
-                        <li>
-                            <a href="dropdown.html"><i class="ri-circle-fill circle-icon text-lilac-600 w-auto"></i>
-                                Dropdown</a>
-                        </li>
-                        <li>
-                            <a href="alert.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                                Alerts</a>
-                        </li>
-                        <li>
-                            <a href="card.html"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
-                                Card</a>
-                        </li>
-                        <li>
-                            <a href="carousel.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                                Carousel</a>
-                        </li>
-                        <li>
-                            <a href="avatar.html"><i class="ri-circle-fill circle-icon text-success-main w-auto"></i>
-                                Avatars</a>
-                        </li>
-                        <li>
-                            <a href="progress.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                                Progress
-                                bar</a>
-                        </li>
-                        <li>
-                            <a href="tabs.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                                Tab &
-                                Accordion</a>
-                        </li>
-                        <li>
-                            <a href="pagination.html"><i
-                                    class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
-                                Pagination</a>
-                        </li>
-                        <li>
-                            <a href="badges.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                                Badges</a>
-                        </li>
-                        <li>
-                            <a href="tooltip.html"><i class="ri-circle-fill circle-icon text-lilac-600 w-auto"></i>
-                                Tooltip &
-                                Popover</a>
-                        </li>
-                        <li>
-                            <a href="videos.html"><i class="ri-circle-fill circle-icon text-cyan w-auto"></i>
-                                Videos</a>
-                        </li>
-                        <li>
-                            <a href="star-rating.html"><i class="ri-circle-fill circle-icon text-indigo w-auto"></i>
-                                Star Ratings</a>
-                        </li>
-                        <li>
-                            <a href="tags.html"><i class="ri-circle-fill circle-icon text-purple w-auto"></i> Tags</a>
-                        </li>
-                        <li>
-                            <a href="list.html"><i class="ri-circle-fill circle-icon text-red w-auto"></i> List</a>
-                        </li>
-                        <li>
-                            <a href="calendar.html"><i class="ri-circle-fill circle-icon text-yellow w-auto"></i>
-                                Calendar</a>
-                        </li>
-                        <li>
-                            <a href="radio.html"><i class="ri-circle-fill circle-icon text-orange w-auto"></i>
-                                Radio</a>
-                        </li>
-                        <li>
-                            <a href="switch.html"><i class="ri-circle-fill circle-icon text-pink w-auto"></i>
-                                Switch</a>
-                        </li>
-                        <li>
-                            <a href="image-upload.html"><i
-                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Upload</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <iconify-icon icon="heroicons:document" class="menu-icon"></iconify-icon>
-                        <span>Forms</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="form.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                                Input Forms</a>
-                        </li>
-                        <li>
-                            <a href="form-layout.html"><i
-                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Input
-                                Layout</a>
-                        </li>
-                        <li>
-                            <a href="form-validation.html"><i
-                                    class="ri-circle-fill circle-icon text-success-main w-auto"></i> Form
-                                Validation</a>
-                        </li>
-                        <li>
-                            <a href="wizard.html"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
-                                Form Wizard</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <iconify-icon icon="mingcute:storage-line" class="menu-icon"></iconify-icon>
-                        <span>Table</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="table-basic.html"><i
-                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Basic
-                                Table</a>
-                        </li>
-                        <li>
-                            <a href="table-data.html"><i
-                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Data
-                                Table</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <iconify-icon icon="solar:pie-chart-outline" class="menu-icon"></iconify-icon>
-                        <span>Chart</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="line-chart.html"><i
-                                    class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Line
-                                Chart</a>
-                        </li>
-                        <li>
-                            <a href="column-chart.html"><i
-                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Column
-                                Chart</a>
-                        </li>
-                        <li>
-                            <a href="pie-chart.html"><i
-                                    class="ri-circle-fill circle-icon text-success-main w-auto"></i> Pie Chart</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="widgets.html">
-                        <iconify-icon icon="fe:vector" class="menu-icon"></iconify-icon>
-                        <span>Widgets</span>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
-                        <span>Users</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="users-list.html"><i
-                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Users
-                                List</a>
-                        </li>
-                        <li>
-                            <a href="users-grid.html"><i
-                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Users
-                                Grid</a>
-                        </li>
-                        <li>
-                            <a href="add-user.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                                Add User</a>
-                        </li>
-                        <li>
-                            <a href="view-profile.html"><i
-                                    class="ri-circle-fill circle-icon text-danger-main w-auto"></i> View
-                                Profile</a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Expense</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.expense.createExpenseView') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Create Expense</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.expense.expenseList') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Expense List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.expense.expenseFilter') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Expense Filter</a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-user-settings-line text-xl me-6 d-flex w-auto"></i>
-                        <span>Role & Access</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="role-access.html"><i
-                                    class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Role &
-                                Access</a>
-                        </li>
-                        <li>
-                            <a href="assign-role.html"><i
-                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Assign
-                                Role</a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Labour</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.labour.createLabourView') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Create Labour</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.labour.labourList') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Labour List</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Labour Work</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.labourWorkDetails.labourWorkDetailsView') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Create Work Report</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.labourWorkDetails.labourWorkDetailsList') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Work Data List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.labourWorkDetails.labourWorkDetailsFiltar') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Work Data Filter</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Labour Payment</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.labourPayment.createLabourPaymentView') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Payment</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.labourPayment.labourPaymentList') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Payment List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.labourPayment.labourPaymentFilter') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Payment List By Filter </a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="sidebar-menu-group-title">Application</li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Vehicle</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.vehicle.createVehicleView') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Create Vehicle</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.vehicle.vehicleList') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Vehicle List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.vehicle.vehiclePaymentFilter') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Vehicle Payment
+                            Filter</a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <iconify-icon icon="simple-line-icons:vector" class="menu-icon"></iconify-icon>
-                        <span>Authentication</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="sign-in.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                                Sign In</a>
-                        </li>
-                        <li>
-                            <a href="sign-up.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                                Sign Up</a>
-                        </li>
-                        <li>
-                            <a href="forgot-password.html"><i
-                                    class="ri-circle-fill circle-icon text-info-main w-auto"></i> Forgot
-                                Password</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="gallery.html">
-                        <iconify-icon icon="solar:gallery-wide-linear" class="menu-icon"></iconify-icon>
-                        <span>Gallery</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pricing.html">
-                        <iconify-icon icon="hugeicons:money-send-square" class="menu-icon"></iconify-icon>
-                        <span>Pricing</span>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <i class="ri-news-line text-xl me-6 d-flex w-auto"></i>
-                        <span>Blog</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="blog.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                                Blog</a>
-                        </li>
-                        <li>
-                            <a href="blog-details.html"><i
-                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Blog
-                                Details</a>
-                        </li>
-                        <li>
-                            <a href="add-blog.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                                Add Blog</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="testimonials.html">
-                        <i class="ri-star-line text-xl me-6 d-flex w-auto"></i>
-                        <span>Testimonial</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="faq.html">
-                        <iconify-icon icon="mage:message-question-mark-round" class="menu-icon"></iconify-icon>
-                        <span>FAQs</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="error.html">
-                        <iconify-icon icon="streamline:straight-face" class="menu-icon"></iconify-icon>
-                        <span>404</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="terms-condition.html">
-                        <iconify-icon icon="octicon:info-24" class="menu-icon"></iconify-icon>
-                        <span>Terms & Conditions</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="coming-soon.html">
-                        <i class="ri-rocket-line text-xl me-6 d-flex w-auto"></i>
-                        <span>Coming Soon</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="maintenance.html">
-                        <i class="ri-hammer-line text-xl me-6 d-flex w-auto"></i>
-                        <span>Maintenance</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="blank-page.html">
-                        <i class="ri-checkbox-multiple-blank-line text-xl me-6 d-flex w-auto"></i>
-                        <span>Blank Page</span>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)">
-                        <iconify-icon icon="icon-park-outline:setting-two" class="menu-icon"></iconify-icon>
-                        <span>Settings</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="company.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                                Company</a>
-                        </li>
-                        <li>
-                            <a href="notification.html"><i
-                                    class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                                Notification</a>
-                        </li>
-                        <li>
-                            <a href="notification-alert.html"><i
-                                    class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                                Notification Alert</a>
-                        </li>
-                        <li>
-                            <a href="theme.html"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
-                                Theme</a>
-                        </li>
-                        <li>
-                            <a href="currencies.html"><i
-                                    class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
-                                Currencies</a>
-                        </li>
-                        <li>
-                            <a href="language.html"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
-                                Languages</a>
-                        </li>
-                        <li>
-                            <a href="payment-gateway.html"><i
-                                    class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Payment
-                                Gateway</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </aside>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Party Payment</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.payment.paymentList') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Payment List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.payment.paymentFilter') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Payment
+                            Filtar</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="{{ route('admin.report_summary.reportSummary') }}">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Report Summary</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('admin.account_balance.accountBalanceView') }}">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Account Balance</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('admin.profile.profileView') }}">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Profile Update</span>
+                </a>
+            </li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Bricks Type</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.bricks_type_category.bricksTypeCategoryList') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Bricks Type Category</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.bricks_type_sub_category.bricksTypeSubCategoryList') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Bricks Type Sub Category</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Setting</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.labour_type.labourTypeList') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Labour Type</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.product.productList') }}"><i
+                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                            Product</a>
+                    </li>
+                    <li>
+                        <a href="{{ Route('admin.company_details.companyDetailsView') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Company Details</a>
+                    </li>
+                    <li>
+                        <a href="{{ Route('admin.financial_years.financialYearsView') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Financial Year</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</aside>

@@ -43,7 +43,7 @@
     <section class="auth bg-base d-flex flex-wrap">
         <div class="auth-left d-lg-block d-none">
             <div class="d-flex align-items-center flex-column h-100 justify-content-center">
-                <img src="assets/images/auth/auth-img.png" alt="">
+                <img src="{{ asset('assets/images/auth/auth-img.png') }}" alt="">
             </div>
         </div>
         <div class="auth-right py-32 px-24 d-flex flex-column justify-content-center">
@@ -58,7 +58,8 @@
                         <span class="icon top-50 translate-middle-y">
                             <iconify-icon icon="mage:user"></iconify-icon>
                         </span>
-                        <input type="text" class="form-control h-56-px bg-neutral-50 radius-12" name="user_id" placeholder="User Id">
+                        <input type="text" class="form-control h-56-px bg-neutral-50 radius-12" name="user_id"
+                            placeholder="User Id">
                     </div>
                     <div class="position-relative mb-20">
                         <div class="icon-field">
@@ -75,14 +76,15 @@
                     <div class="">
                         <div class="d-flex justify-content-between gap-2">
                             <div class="form-check style-check d-flex align-items-center">
-                                <input class="form-check-input border border-neutral-300" type="checkbox" value="" name="remember"
-                                    id="remeber">
+                                <input class="form-check-input border border-neutral-300" type="checkbox" value=""
+                                    name="remember" id="remeber">
                                 <label class="form-check-label" for="remeber">Remember me </label>
                             </div>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary text-sm btn-sm px-12 py-16 w-100 radius-12 mt-32"> Sign In</button>
+                    <button type="submit" class="btn btn-primary text-sm btn-sm px-12 py-16 w-100 radius-12 mt-32">
+                        Sign In</button>
                 </form>
             </div>
         </div>

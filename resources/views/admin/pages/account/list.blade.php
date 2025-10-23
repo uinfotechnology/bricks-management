@@ -1,7 +1,7 @@
 @extends('admin.include.layout')
 
 @push('title')
-    Admin Dashboard
+   Account List
 @endpush
 
 @push('css')
@@ -32,17 +32,8 @@
                                         <th scope="col">Party Name</th>
                                         <th scope="col">Contact Person</th>
                                         <th scope="col">Mobile</th>
-                                        <th scope="col">Opeaning Balance</th>
-                                        <th scope="col">Mobile 2</th>
-                                        <th scope="col">GST </th>
-                                        <th scope="col">PAN</th>
                                         <th scope="col">Address</th>
-                                        <th scope="col">Bank</th>
-                                        <th scope="col">Account No.</th>
-                                        <th scope="col">IFSC</th>
-                                        <th scope="col">Holder</th>
                                         <th scope="col">Date</th>
-                                        <th scope="col">Remarks</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -73,7 +64,6 @@
     <script src="{{ asset('assets/js/lib/datatable/js/jszip.min.js') }}"></script>
     <script src="{{ asset('assets/js/lib/datatable/js/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/js/lib/datatable/js/vfs_fonts.js') }}"></script>
-
 
     <script>
         var accountList = "{{ route('admin.account.list') }}";

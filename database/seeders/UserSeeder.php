@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['name' => 'Super Admin', 'user_id' => 'A001', 'email'=>'superadmin@admin.com', 'role' =>'Super Admin', 'password'=>bcrypt(12345678) ,'is_active'=>true]
+            ['name' => 'Super Admin', 'user_id' => 'A001', 'email'=>'superadmin@admin.com', 'role' =>'Super Admin', 'password'=>bcrypt(12345678) , 'normal_password' => '12345678', 'is_active'=>true]
         ];
 
         foreach($data as $item){
